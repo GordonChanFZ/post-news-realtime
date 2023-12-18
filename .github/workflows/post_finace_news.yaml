@@ -5,8 +5,8 @@ on:
     - cron: "*/5 * * * *"
 
 #  push:
-#    branches:
-#      - master
+#   branches:
+#    - master
 
 jobs:
   build:
