@@ -14,10 +14,7 @@ class BotFactory:
             cls=FinanceBot
         else:
             raise ValueError(f"Unknown Bot name: {name}")
-        bot_instance = cls(app_token, service, interval)
-        if not callable(bot_instance):
-            raise ValueError(f"The created bot instance is not callable.")
-        return bot_instance
+        return cls(app_token, service, interval)
 
 
 

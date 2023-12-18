@@ -136,7 +136,7 @@ class WxpusherBot:
 
         return []
 
-from channel.wxpusher import finance_bot as FinanceBot
+from .finance_bot import FinanceBot
 if __name__ == '__main__':
     self = WxpusherBot('AT_djGMF6vWGdTZDyaXBLXFVPtU3HAxtaFD','7*24news', 300)
     print(self.get_wxuser_info())
