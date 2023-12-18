@@ -63,9 +63,9 @@ class WxpusherBot:
             self, messages: List[Message]
     ) -> None:
         for message in messages:
-            # if self.is_message_expired(message):
-            #     logger.info(f"Ignore expired message: {message}")
-            #     continue
+            if self.is_message_expired(message):
+                logger.info(f"Ignore expired message: {message}")
+                continue
             self._send_message(str(message))
 
     def post(
