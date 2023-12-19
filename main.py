@@ -24,8 +24,8 @@ if __name__ == "__main__":
     webhook = args.webhook
     interval =  args.interval
 
-    print(f"定义定时任务，每{interval}min执行")
-    schedule.every(interval).minutes.do(job,webhook,interval)
+    print(f"定义定时任务，每5min执行")
+    schedule.every(5).minutes.do(job,webhook,interval)
 
     while True:
         # 运行所有已经到期的定时任务

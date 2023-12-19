@@ -5,7 +5,7 @@ on:
 #    - cron: "*/5 * * * *"
   push:
     branches:
-      - master
+      - githup_action
 
 jobs:
   build:
