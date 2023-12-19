@@ -18,7 +18,7 @@ jobs:
         with:
           registry: ghcr.io # 声明镜像源
           username: ${{ github.actor }} # 当前github 用户名
-          password: ${{ secrets.GITHUB_TOKEN }} # 需要去 https://github.com/settings/tokens 生成一个 名为 token，注意此token 需要读写 packages 等权限
+          password: ${{ secrets.HUB_GITHUB_TOKEN }} # 需要去 https://github.com/settings/tokens 生成一个 名为 token，注意此token 需要读写 packages 等权限
 
       - name: Build the  Docker image
         run:
