@@ -12,7 +12,8 @@ from channel import logger
 available_setting = {
     "webhook": "", #企业微信机器人webhook
     "interval": 300, #更新频率
-    "debug":False
+    "debug":False,
+    "appdata_dir": "",  # 数据目录
 }
 
 
@@ -75,10 +76,10 @@ config = Config()
 
 def load_config():
     global config
-    config_path = "config/config.json"
+    config_path = "./config/config.json"
     if not os.path.exists(config_path):
         logger.info("配置文件不存在，将使用config-template.json模板")
-        config_path = "config-template.json"
+        config_path = "./config-template.json"
 
     config_str = read_file(config_path)
     logger.debug("[INIT] config str: {}".format(config_str))
