@@ -1,12 +1,12 @@
 name: Push Fiance News every 5 minutes
 on:
-  schedule:
-    # 每五分钟执行一次
-    - cron: "*/5 * * * *"
+#  schedule:
+#    # 每五分钟执行一次
+#    - cron: "*/5 * * * *"
 
-#  push:
-#   branches:
-#    - master
+  push:
+    branches:
+      - master
 
 jobs:
   build:
