@@ -148,3 +148,4 @@ channel/telegram
 run.py
 README_TG.md
 .idea
+.env

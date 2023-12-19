@@ -36,8 +36,7 @@ class FinanceNews:
 """
     #兼容微信，微信不支持md格式
     def to_text(self) -> str:
-        return f"""
-{self.text}
+        return f"""{self.text}
 {datetime.fromtimestamp(self.created_at / 1000, tz=timezone(timedelta(hours=8))).strftime('(%Y-%m-%d %H:%M)')}
 """
 
@@ -59,8 +58,6 @@ class FinanceBot(WecomTopicBot):
             # 按照时间先后排序
             news_list.reverse()
             for news in news_list:
-                print(news)
-                print(news.created_at)
                 messages.append(
                     Message(text=news.to_text(), published_at=news.created_at)
                 )
