@@ -7,7 +7,7 @@ from typing import List, Optional
 import requests
 from channel import logger
 from channel.utils import Message
-from channel.wxpusher.chatgpt_bot  import ChatGPTBot
+from channel.chatgpt_bot import ChatGPTBot
 
 class WxpusherBot:
 

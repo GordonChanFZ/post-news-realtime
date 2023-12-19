@@ -1,4 +1,4 @@
-name: Post Fiance and Digital Currency News every 5 minutes
+name: Push Fiance News every 5 minutes
 on:
   schedule:
     # 每五分钟执行一次
@@ -10,7 +10,7 @@ on:
 
 jobs:
   build:
-    name: Get Fiance and Digital Currency News
+    name: Get Fiance News every 5 minutes
     runs-on: ubuntu-20.04
     steps:
       - name: Checkout
@@ -42,7 +42,7 @@ jobs:
 
       - name: Send Message
         run: |
-          python main.py finance ${{ secrets.WXPUSHER_TOKEN }} 7*24news -i 300
+          python main.py finance ${{ secrets.WEBHOOK }} 7*24news -i 300
 
       - name: Touch change every first day of month
         run: if [[ $(date +%d) -eq 1 ]] && ! $(grep -q "$(date +'%F')" .keep_alive); then echo $(date +'%F') >> .keep_alive; fi
