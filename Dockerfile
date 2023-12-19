@@ -3,8 +3,8 @@ FROM python:3.10
 LABEL maintainer="gordonchanfz@ai-note.xyz"
 ARG TZ='Asia/Shanghai'
 
-RUN && /usr/local/bin/python -m pip install --no-cache --upgrade pip \
-    && pip install --no-cache -r requirements.txt \
+RUN python -m pip install --no-cache --upgrade pip \
+    && pip install --no-cache -r requirements.txt
 
 WORKDIR /app
 
