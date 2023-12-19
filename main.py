@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
 import schedule
-import argparse
 from channel.wecom.finance_bot import FinanceBot
 import time
 from config import load_config,conf

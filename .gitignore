@@ -149,4 +149,4 @@ run.py
 README_TG.md
 .idea
 .env
-config.json
+config/config.json
