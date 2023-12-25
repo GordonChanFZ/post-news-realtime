@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
 from dataclasses import dataclass
 from typing import Dict
-
+from dataclasses import dataclass, field
+from datetime import datetime, timezone, timedelta
 import requests
 
 from channel import logger
@@ -58,5 +59,15 @@ def escape_text(text: str) -> str:
             text = text.replace(keyword, f"\\{keyword}")
         return text
     return ""
-
+#时间戳是用于两处，1.判断是否过期消息，2.内容最后一行有时间展示
+def to_markdown(content:str,timestamp:int) -> str:
+        return f"""
+{escape_text(content)}
+{escape_text(datetime.fromtimestamp(timestamp / 1000, tz=timezone(timedelta(hours=8))).strftime('(%Y-%m-%d %H:%M)'))}
+"""
+    #兼容微信，微信不支持md格式
+def to_text(content:str,timestamp:int) -> str:
+        return f"""{content}
+{datetime.fromtimestamp(timestamp / 1000, tz=timezone(timedelta(hours=8))).strftime('(%Y-%m-%d %H:%M)')}
+"""
 

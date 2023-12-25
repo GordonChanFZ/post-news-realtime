@@ -1,13 +1,18 @@
 # -*- coding: utf-8 -*-
 import schedule
 from channel.wecom.finance_bot import FinanceBot
+from channel.wecom.hot_research_bot import HotResearchBot
 import time
 from config import load_config,conf
+from channel import logger
 
-def job(webhook, interval):
+def finance(webhook, interval):
     bot = FinanceBot(webhook, interval)
-    bot.post()
+    bot.post('text')
 
+def hot_search(webhook):
+    bot=HotResearchBot(webhook)
+    bot.post('md')
 
 if __name__ == "__main__":
 
@@ -16,8 +21,14 @@ if __name__ == "__main__":
     webhook = conf().get("webhook")
     interval =  conf().get("interval")
 
-    print(f"定义定时任务，每5min执行")
-    schedule.every(5).minutes.do(job,webhook,interval)
+    logger.info(f"雪球每5min推送最近5min的资讯")
+    schedule.every(5).minutes.do(finance, webhook[0], interval)
+
+    logger.info("设定在8:00-20:00时间范围内每隔4小时执行一次")
+    schedule.every().day.at("08:00").do(hot_search, webhook[1])
+    schedule.every().day.at("12:00").do(hot_search, webhook[1])
+    schedule.every().day.at("16:00").do(hot_search, webhook[1])
+    schedule.every().day.at("20:00").do(hot_search, webhook[1])
 
     while True:
         # 运行所有已经到期的定时任务
